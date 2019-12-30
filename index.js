@@ -5,7 +5,7 @@ const addListenerFn = global.WebSocket ? 'addEventListener' : 'addListener';
 const removeListenerFn = global.WebSocket ? 'removeEventListener' : 'removeListener';
 
 module.exports = class extends EventEmitter {
-  constructor(url, opt) {
+  constructor(url, opt  = {}) {
     super();
 
     const onopen = () => {
@@ -30,7 +30,7 @@ module.exports = class extends EventEmitter {
         this._ws[removeListenerFn]('message', onmessage);
       }
 
-      this._ws = new WebSocket(url, opt);
+      this._ws = new WebSocket(url, opt.options);
       this._ws[addListenerFn]('open', onopen);
       this._ws[addListenerFn]('error', onerror);
       this._ws[addListenerFn]('message', onmessage);
