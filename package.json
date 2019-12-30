@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A websocket lib for both node & browser, with promisify & auto reconnect.",
   "main": "index.js",
+  "peerDependencies": {
+    "ws": "*"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
