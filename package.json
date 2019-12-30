@@ -1,0 +1,23 @@
+{
+  "name": "async-ws",
+  "version": "0.0.1",
+  "description": "A websocket lib for both node & browser, with promisify & auto reconnect.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talrasha007/async-ws.git"
+  },
+  "keywords": [
+    "websocket",
+    "ws"
+  ],
+  "author": "Tal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talrasha007/async-ws/issues"
+  },
+  "homepage": "https://github.com/talrasha007/async-ws#readme"
+}
