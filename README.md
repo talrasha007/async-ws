@@ -9,7 +9,7 @@ const WebSocket = require('async-ws');
   const ws = new WebSocket('xxxx', { binaryType: 'arraybuffer' });
 
   await ws.ready();
-  await ws.send('ping');
+  await ws.send('ping'); // if socket is not ready, message will be sent after connected. 
 
   ws.on('open', console.log); // will also be triggered when reconnected. 
   ws.on('message', console.log);
