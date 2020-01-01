@@ -1,6 +1,6 @@
 {
   "name": "async-ws",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A websocket lib for both node & browser, with promisify & auto reconnect.",
   "main": "index.js",
   "peerDependencies": {

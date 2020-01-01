@@ -32,6 +32,7 @@ module.exports = class extends EventEmitter {
 
       this._ws = new WebSocket(url, opt.options);
       this._ws[addListenerFn]('open', onopen);
+      this._ws[addListenerFn]('close', onerror);
       this._ws[addListenerFn]('error', onerror);
       this._ws[addListenerFn]('message', onmessage);
 
@@ -46,6 +47,10 @@ module.exports = class extends EventEmitter {
   async send(data) {
     await this.ready();
     this._ws.send(data);
+  }
+
+  async reconnect() {
+    this._ready && this._ws.close();
   }
 
   async ready() {
