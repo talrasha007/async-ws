@@ -13,10 +13,15 @@ module.exports = class extends EventEmitter {
       this.emit('open');
     };
 
+    const onclose = () => {
+      this._ready = false;
+      reconnect();
+    };
+
     const onerror = (error) => {
       this._ready = false;
-      this.emit('error', error);
       reconnect();
+      this.emit('error', error);
     };
 
     const onmessage = (msg) => {
@@ -26,13 +31,14 @@ module.exports = class extends EventEmitter {
     const reconnect = () => {
       if (this._ws) {
         this._ws[removeListenerFn]('open', onopen);
+        this._ws[removeListenerFn]('close', onclose);
         this._ws[removeListenerFn]('error', onerror);
         this._ws[removeListenerFn]('message', onmessage);
       }
 
       this._ws = new WebSocket(url, opt.options);
       this._ws[addListenerFn]('open', onopen);
-      this._ws[addListenerFn]('close', onerror);
+      this._ws[addListenerFn]('close', onclose);
       this._ws[addListenerFn]('error', onerror);
       this._ws[addListenerFn]('message', onmessage);
 
@@ -50,7 +56,10 @@ module.exports = class extends EventEmitter {
   }
 
   async reconnect() {
-    this._ready && this._ws.close();
+    if (this._ready) {
+      this._ready = false;
+      this._ws.close();
+    }
   }
 
   async ready() {
