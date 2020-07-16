@@ -51,7 +51,7 @@ module.exports = class extends EventEmitter {
       }
     };
 
-    this.autoReconnect = opt.autoReconnect === false;
+    this.autoReconnect = opt.autoReconnect !== false;
     this._connect = connect;
 
     if (this.autoReconnect) {
@@ -64,7 +64,7 @@ module.exports = class extends EventEmitter {
     this._ws.send(data);
   }
 
-  async close(code = 1005, reason = '') {
+  async close(code, reason = '') {
     if (!this._closing && this._ws) {
       this._closing = true;
       this._ws.close(code, reason);

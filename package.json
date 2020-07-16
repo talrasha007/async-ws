@@ -1,6 +1,6 @@
 {
   "name": "async-ws",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A websocket lib for both node & browser, with promisify & auto reconnect.",
   "main": "index.js",
   "peerDependencies": {
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/talrasha007/async-ws/issues"
   },
-  "homepage": "https://github.com/talrasha007/async-ws#readme"
+  "homepage": "https://github.com/talrasha007/async-ws#readme",
+  "devDependencies": {
+    "ws": "^7.3.1"
+  }
 }
