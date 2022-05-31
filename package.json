@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/talrasha007/async-ws#readme",
   "devDependencies": {
-    "ws": "^7.4.6"
+    "ws": "^8.7.0"
   }
 }
